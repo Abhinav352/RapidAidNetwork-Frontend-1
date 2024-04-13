@@ -24,7 +24,7 @@ import defaultProfilePic from "/defco9.png";
   const fetchProfileData = useCallback(async () => {
     try {
       const userEmail = JSON.parse(localStorage.getItem('userEmail'));
-      const response = await axios.get('http://localhost:5000/Profile', {
+      const response = await axios.get('https://rapidaidnetwork-backend.onrender.com/Profile', {
         params: { userEmail },
       });
       const data = response.data;
@@ -44,7 +44,7 @@ import defaultProfilePic from "/defco9.png";
       const formData = new FormData();
       formData.append('profilePicture', file);
       const userEmail = JSON.parse(localStorage.getItem('userEmail'));
-      await axios.post(`http://localhost:5000/Profile/upload/${userEmail}`, formData);
+      await axios.post(`https://rapidaidnetwork-backend.onrender.com/Profile/upload/${userEmail}`, formData);
       // Fetch user profile data again after successful upload
       fetchProfileData();
     } catch (error) {
@@ -85,7 +85,7 @@ import defaultProfilePic from "/defco9.png";
             {/* Display profile picture if available */}
             {userProfile.profilePic ? (
               <img
-                src={`http://localhost:5000/${userProfile.profilePic.replace(/\\/g, '/')}`}
+                src={`https://rapidaidnetwork-backend.onrender.com/${userProfile.profilePic.replace(/\\/g, '/')}`}
                 alt={`Profile of ${userProfile.firstName} ${userProfile.lastName}`}
                 style={{border:'2px ',boxShadow:'0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2), 0 0 25px rgba(255, 255, 255, 0.1)'}}
                 className='profile-picture'

@@ -26,7 +26,7 @@ const PasswordReset = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/login/reset-password', { resetToken, newPassword });
+      await axios.post('https://rapidaidnetwork-backend.onrender.com/login/reset-password', { resetToken, newPassword });
       setMessage('Password reset successfully. Redirecting to login...');
 
       setTimeout(() => {
