@@ -200,8 +200,8 @@ const Location = () => {
                 <button
                 className="sos-button"
                 onClick={() => {
-                getCurrentLocation();
                 handleFetchData();
+                getCurrentLocation();
                 }}
                 >
                   <span>
