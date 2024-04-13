@@ -135,6 +135,7 @@ const Location = () => {
     }
     console.log('User is not in any of the disaster areas.');
     console.log(userLocation);
+    console.log(disasterData);
     // Continue with your application logic
   };
 
