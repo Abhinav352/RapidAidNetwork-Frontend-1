@@ -10,37 +10,37 @@ const InitialResponse = () => {
     {
       id: 1,
       name: "Earthquake",
-      imageUrl: "/src/Images/earth3.jpeg"
+      imageUrl: "/earth3.jpeg"
     },
     {
       id: 2,
       name: "Flood",
-      imageUrl: "/src/Images/flood3.jpeg"
+      imageUrl: "/flood3.jpeg"
     },
     {
       id: 3,
       name: "Wildfire",
-      imageUrl: "/src/Images/fire3.jpeg"
+      imageUrl: "/fire3.jpeg"
     },
     {
       id: 4,
       name: "Tornado",
-      imageUrl: "/src/Images/tornado3.jpeg"
+      imageUrl: "/tornado3.jpeg"
     },
     {
       id: 5,
       name: "Hurricane",
-      imageUrl: "/src/Images/hurricane3.jpeg"
+      imageUrl: "/hurricane3.jpeg"
     },
     {
       id: 6,
       name: "Volcano",
-      imageUrl: "/src/Images/volcano3.jpeg"
+      imageUrl: "/volcano3.jpeg"
     },
     {
       id: 7,
       name: "Tsunami",
-      imageUrl: "/src/Images/tsunami3.jpeg"
+      imageUrl: "/tsunami3.jpeg"
     }
   ];
 
