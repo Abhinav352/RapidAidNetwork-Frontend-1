@@ -68,7 +68,7 @@ const Location = () => {
 
   const handleFetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/Location/${accessToken}`);
+      const response = await axios.get(`https://rapidaidnetwork-backend.onrender.com/Location/${accessToken}`);
       setDisasterData(response.data);
       console.log(response.data);
     } catch (error) {
@@ -119,7 +119,7 @@ const Location = () => {
 
 
           // Make a POST request to the backend endpoint with latitude, longitude, city, and country
-          await axios.post('http://localhost:5000/emergency', {
+          await axios.post('https://rapidaidnetwork-backend.onrender.com/emergency', {
             latitude,
             longitude,
             country,

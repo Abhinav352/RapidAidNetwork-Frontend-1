@@ -19,7 +19,7 @@ const Messages = () => {
   useEffect(() => {
     const fetchUserRooms = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/rooms/${currentUserEmail}`);
+        const response = await axios.get(`https://rapidaidnetwork-backend.onrender.com/rooms/${currentUserEmail}`);
         setUserRooms(response.data);
       } catch (error) {
         console.error('Error fetching user rooms:', error.message);
@@ -33,7 +33,7 @@ const Messages = () => {
       try {
         const pics = {};
         for (const room of userRooms) {
-          const response = await axios.get('http://localhost:5000/image', {
+          const response = await axios.get('https://rapidaidnetwork-backend.onrender.com/image', {
             params: { userEmail: room.user1 === currentUserEmail ? JSON.parse(room.user2) : JSON.parse(room.user1) },
           });
           pics[room.roomId] = response.data;
@@ -49,7 +49,7 @@ const Messages = () => {
   const fetchProfileData = useCallback(async () => {
     try {
       const userEmail = JSON.parse(localStorage.getItem('userEmail'));
-      const response = await axios.get('http://localhost:5000/Profile', {
+      const response = await axios.get('https://rapidaidnetwork-backend.onrender.com/Profile', {
         params: { userEmail },
       });
       const data = response.data;
@@ -84,7 +84,7 @@ const Messages = () => {
           <div className="profile-info">
             {userProfile.profilePic ? (
               <img
-                src={`http://localhost:5000/${userProfile.profilePic.replace(/\\/g, '/')}`}
+                src={`https://rapidaidnetwork-backend.onrender.com/${userProfile.profilePic.replace(/\\/g, '/')}`}
                 alt={`Profile of ${userProfile.firstName} ${userProfile.lastName}`}
              
                 className="profile-pictur"
@@ -106,7 +106,7 @@ const Messages = () => {
                 <div className="user-info">
                   {profilePics[room.roomId] ? (
                     <img
-                      src={`http://localhost:5000/${profilePics[room.roomId].replace(/\\/g, '/')}`}
+                      src={`https://rapidaidnetwork-backend.onrender.com/${profilePics[room.roomId].replace(/\\/g, '/')}`}
                       alt="Profile"
                       className="profile-picture-smally"
                     />

@@ -17,7 +17,7 @@ const OtherProfile = () => {
     const fetchProfileData = useCallback(async () => {
         try {
           console.log(userEmail);
-          const response = await axios.get(`http://localhost:5000/Profile/${JSON.parse(userEmail)}`);
+          const response = await axios.get(`https://rapidaidnetwork-backend.onrender.com/Profile/${JSON.parse(userEmail)}`);
           const data = response.data;
           setUserProfile(data);
         } catch (error) {
@@ -45,7 +45,7 @@ const OtherProfile = () => {
             {/* Display profile picture if available */}
             {userProfile.profilePic ? (
               <img
-                src={`http://localhost:5000/${userProfile.profilePic.replace(/\\/g, '/')}`}
+                src={`https://rapidaidnetwork-backend.onrender.com/${userProfile.profilePic.replace(/\\/g, '/')}`}
                 alt={`Profile of ${userProfile.firstName} ${userProfile.lastName}`}
                 style={{border:'2px ',boxShadow:'0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2), 0 0 25px rgba(255, 255, 255, 0.1)'}}
                 className='profile-pictur'

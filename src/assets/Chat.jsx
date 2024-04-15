@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './css/Chat.css';
 
-const socket = io('http://localhost:5000', { transports: ['websocket'] });
+const socket = io('https://rapidaidnetwork-backend.onrender.com', { transports: ['websocket'] });
 
 const NavBar = ({ profilePic, currentUserEmail, roomDetails }) => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const NavBar = ({ profilePic, currentUserEmail, roomDetails }) => {
         
         {profilePic ? (
           <img
-            src={`http://localhost:5000/${profilePic.replace(/\\/g, '/')}`}
+            src={`https://rapidaidnetwork-backend.onrender.com/${profilePic.replace(/\\/g, '/')}`}
             alt="Profile"
             
             style={{ width: '40px', height: '40px', borderRadius: '50%', marginLeft: '5vh', marginBottom: '1vh',cursor:'pointer' }}
@@ -63,7 +63,7 @@ const Chat = () => {
 
 const fetchProfilePic = useCallback(async (email) => {
   try {
-    const response = await axios.get('http://localhost:5000/image', {
+    const response = await axios.get('https://rapidaidnetwork-backend.onrender.com/image', {
       params: { userEmail: email },
     });
     const data = response.data;
@@ -94,7 +94,7 @@ useEffect(() => {
   useEffect(() => { 
     const fetchMessages = async () => { 
       try { 
-        const response = await axios.get(`http://localhost:5000/messages/${roomId}`); 
+        const response = await axios.get(`https://rapidaidnetwork-backend.onrender.com/messages/${roomId}`); 
         setMessages(response.data); 
         if (messagesContainerRef.current) {
           messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
@@ -106,7 +106,7 @@ useEffect(() => {
 
     const fetchRoomDetails = async () => { 
       try { 
-        const response = await axios.get(`http://localhost:5000/room/${roomId}`); 
+        const response = await axios.get(`https://rapidaidnetwork-backend.onrender.com/room/${roomId}`); 
         setRoomDetails(response.data); 
       } catch (error) { 
         console.error('Error fetching room details:', error.message); 
