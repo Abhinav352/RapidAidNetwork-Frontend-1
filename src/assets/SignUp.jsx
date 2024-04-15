@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import './Signup.css';
+import './css/Signup.css';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi'; // Add this line
 import { Select, MenuItem, FormControl, InputLabel, OutlinedInput } from '@mui/material';
@@ -41,7 +41,7 @@ const SignUp = () => {
     try {
       setLoading(true);
 
-      const response = await fetch('https://rapidaidnetwork-backend.onrender.com/signup', {
+      const response = await fetch('http://localhost:5000/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const SignUp = () => {
   
   const checkEmailExists = async (email) => {
     try {
-      const response = await fetch(`https://rapidaidnetwork-backend.onrender.com/check-email?email=${email}`);
+      const response = await fetch(`http://localhost:5000/check-email?email=${email}`);
       const data = await response.json();
       setEmailExists(data.exists);
     } catch (error) {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import './Dropdown.css';
+import './css/Dropdown.css';
 const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,8 +14,8 @@ const DropdownMenu = () => {
     <div className="dropdown-menu-wrapper">
       {isOpen && (
         <div className="dropdown-menu">
-          <a href="#">News</a>
-          <a href="#">Profile</a>
+          <a href="/News">News</a>
+          <a href="/Profile">Profile</a>
         </div>
       )}
       <button className="dropdown-toggle" onClick={toggleDropdown}>

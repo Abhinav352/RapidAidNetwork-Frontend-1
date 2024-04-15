@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Forgot.css';
+import './css/Forgot.css';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -10,7 +10,7 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     try {
-      await axios.post('https://rapidaidnetwork-backend.onrender.com/login/forgot-password', { userEmail: email });
+      await axios.post('http://localhost:5000/login/forgot-password', { userEmail: email });
       alert('Password reset instructions have been sent to your email.');
       setEmail('');
     } catch (err) {

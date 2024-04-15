@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import './Login.css';
+import './css/Login.css';
 import NavBar from './NavBar';
 import { authContext } from '../App';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -19,7 +19,7 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post('https://rapidaidnetwork-backend.onrender.com/login', {
+      const response = await axios.post('http://localhost:5000/login', {
         userEmail,
         userPassword,
       });

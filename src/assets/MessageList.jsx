@@ -4,7 +4,8 @@ import axios from 'axios';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { authContext } from '../App';
-import './Messages.css';
+import './css/Messages.css';
+import defaultProfilePic from "/defco9.png";
 
 const Messages = () => {
   const [userRooms, setUserRooms] = useState([]);
@@ -17,7 +18,7 @@ const Messages = () => {
   useEffect(() => {
     const fetchUserRooms = async () => {
       try {
-        const response = await axios.get(`https://rapidaidnetwork-backend.onrender.com/rooms/${currentUserEmail}`);
+        const response = await axios.get(`http://localhost:5000/rooms/${currentUserEmail}`);
         setUserRooms(response.data);
       } catch (error) {
         console.error('Error fetching user rooms:', error.message);
@@ -31,7 +32,7 @@ const Messages = () => {
       try {
         const pics = {};
         for (const room of userRooms) {
-          const response = await axios.get('https://rapidaidnetwork-backend.onrender.com/image', {
+          const response = await axios.get('http://localhost:5000/image', {
             params: { userEmail: room.user1 === currentUserEmail ? JSON.parse(room.user2) : JSON.parse(room.user1) },
           });
           pics[room.roomId] = response.data;
@@ -47,7 +48,7 @@ const Messages = () => {
   const fetchProfileData = useCallback(async () => {
     try {
       const userEmail = JSON.parse(localStorage.getItem('userEmail'));
-      const response = await axios.get('https://rapidaidnetwork-backend.onrender.com/Profile', {
+      const response = await axios.get('http://localhost:5000/Profile', {
         params: { userEmail },
       });
       const data = response.data;
@@ -66,6 +67,7 @@ const Messages = () => {
   };
 
   if (authState) {
+    if(userRooms.length > 0){
     return (
       <div className="messagy-container">
         
@@ -81,7 +83,7 @@ const Messages = () => {
           <div className="profile-info">
             {userProfile.profilePic ? (
               <img
-                src={`https://rapidaidnetwork-backend.onrender.com/${userProfile.profilePic.replace(/\\/g, '/')}`}
+                src={`http://localhost:5000/${userProfile.profilePic.replace(/\\/g, '/')}`}
                 alt={`Profile of ${userProfile.firstName} ${userProfile.lastName}`}
              
                 className="profile-pictur"
@@ -103,12 +105,12 @@ const Messages = () => {
                 <div className="user-info">
                   {profilePics[room.roomId] ? (
                     <img
-                      src={`https://rapidaidnetwork-backend.onrender.com/${profilePics[room.roomId].replace(/\\/g, '/')}`}
+                      src={`http://localhost:5000/${profilePics[room.roomId].replace(/\\/g, '/')}`}
                       alt="Profile"
                       className="profile-picture-smally"
                     />
                   ) : (
-                    <img src="/defco9.png" alt="Default Profile" className="profile-picture-smally" />
+                    <img src={defaultProfilePic} alt="Default Profile" className="profile-picture-smally" />
                   )}
                   <span>{room.user1 === currentUserEmail ? JSON.parse(room.userName2) : JSON.parse(room.userName1)}</span>
                 </div>
@@ -119,7 +121,14 @@ const Messages = () => {
       </div>
     </div>
   );
-
+    }
+    else{
+      return (
+        <h1 className='No-Messages'>No Messages</h1>
+      );
+    }
+     
+    
   } else {
     return <Navigate to="/Login" />;
   }

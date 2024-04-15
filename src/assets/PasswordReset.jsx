@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Forgot.css';
+import './css/Forgot.css';
 
 const PasswordReset = () => {
   const { resetToken } = useParams();
@@ -26,7 +26,7 @@ const PasswordReset = () => {
     }
 
     try {
-      await axios.post('https://rapidaidnetwork-backend.onrender.com/login/reset-password', { resetToken, newPassword });
+      await axios.post('http://localhost:5000/login/reset-password', { resetToken, newPassword });
       setMessage('Password reset successfully. Redirecting to login...');
 
       setTimeout(() => {

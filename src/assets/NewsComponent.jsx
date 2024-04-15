@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-import './NewsComponent.css';
+import './css/NewsComponent.css';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { authContext } from '../App';
 import { useContext } from 'react';
@@ -18,7 +18,7 @@ const NewsComponent = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get(`https://rapidaidnetwork-backend.onrender.com/News/${currentPage}`);
+        const response = await axios.get(`http://localhost:5000/News/${currentPage}`);
         setNews(response.data);
       } catch (error) {
         console.error('Error fetching News:', error.message);

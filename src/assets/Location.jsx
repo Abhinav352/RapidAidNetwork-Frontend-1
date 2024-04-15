@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Loc.css';
+import './css/Loc.css';
 import { useNavigate } from 'react-router-dom';
-import ImageSlider from './ImageSlider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComments  } from '@fortawesome/free-solid-svg-icons';
 import DropdownMenu from './DropDownMenu';
 import {Link} from 'react-scroll';
 import dwnbutton from '../Images/arrow.png'
@@ -66,7 +67,7 @@ const Location = () => {
 
   const handleFetchData = async () => {
     try {
-      const response = await axios.get(`https://rapidaidnetwork-backend.onrender.com/Location/${accessToken}`);
+      const response = await axios.get(`http://localhost:5000/Location/${accessToken}`);
       setDisasterData(response.data);
       console.log(response.data);
     } catch (error) {
@@ -117,7 +118,7 @@ const Location = () => {
           
 
           // Make a POST request to the backend endpoint with latitude, longitude, city, and country
-          await axios.post('https://rapidaidnetwork-backend.onrender.com/emergency', {
+          await axios.post('http://localhost:5000/emergency', {
             latitude,
             longitude,
             country,
@@ -135,7 +136,6 @@ const Location = () => {
     }
     console.log('User is not in any of the disaster areas.');
     console.log(userLocation);
-    console.log(disasterData);
     // Continue with your application logic
   };
 
@@ -187,20 +187,20 @@ const Location = () => {
               SOS
               </span>
               </button>
+             
         </div>
-        <ImageSlider/>
+      
       </div>
 
       <div className='wholeM'>
       <DropdownMenu/>
           <div className="sos-container">
-          
+         
             <div className="outer-circle"></div>
               <div className="inner-circle"></div>
                 <button
                 className="sos-button"
                 onClick={() => {
-                handleFetchData();
                 getCurrentLocation();
                 }}
                 >
@@ -208,6 +208,7 @@ const Location = () => {
                   SOS
                   </span>
                 </button>
+                <button className='loc-message'><a href="/Messages"><FontAwesomeIcon icon={faComments}  fontSize={'36px'} color='white' /></a></button>
           </div>
           
           <Link activeClass="active" 
@@ -217,10 +218,7 @@ const Location = () => {
       offset={50} 
       duration={500}><img className='dwn' src={dwnbutton}></img></Link>
           </div>
-      
-      <div className='section2' id='section2'>
-          <ImageSlider/>
-          </div>
+              
         </>
     
   );

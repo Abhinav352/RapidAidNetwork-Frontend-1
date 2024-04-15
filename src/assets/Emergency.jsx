@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../App';
 import { useContext } from 'react';
-import './Emergency2.css';
+import './css/Emergency2.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 const Emergency = () => {
   const [emergency, setEmergency] = useState([]);
@@ -40,7 +40,7 @@ const Emergency = () => {
         await fetchUserLocation(); // Fetch user location first
 
         // Fetch emergency data
-        const response = await axios.get('https://rapidaidnetwork-backend.onrender.com/emergency');
+        const response = await axios.get('http://localhost:5000/emergency');
         const emergencyData = response.data;
 
         // Filter data within 20KM radius

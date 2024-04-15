@@ -1,7 +1,7 @@
 // RequestList.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Req.css';
+import './css/Req.css';
 import { useNavigate,Navigate } from 'react-router-dom';
 import { authContext } from '../App';
 import { useContext } from 'react';
@@ -36,7 +36,7 @@ const RequestPage = () => {
 
     try {
       // Make a POST request to the backend endpoint
-      await axios.post('https://rapidaidnetwork-backend.onrender.com/requests', {
+      await axios.post('http://localhost:5000/requests', {
         itemType,
         description,
         username,
@@ -76,7 +76,7 @@ if(authState)
         </div>
         <div id='gapy'></div>
         <div className='form-group'> 
-        <label htmlFor='desc' id='desclabel'>Description</label>
+        {/* <label htmlFor='desc' id='desclabel'>Description</label> */}
         <textarea name="desc" id="desc" placeholder='Enter quantity and related info.....'  value={description} onChange={handleDescriptionChange}></textarea>
         <div id='char-count'>{wordCount} words (Max 50)</div>
         </div>
