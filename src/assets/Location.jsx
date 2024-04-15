@@ -7,6 +7,7 @@ import { faComments  } from '@fortawesome/free-solid-svg-icons';
 import DropdownMenu from './DropDownMenu';
 import {Link} from 'react-scroll';
 import dwnbutton from '../Images/arrow.png'
+import wall from '../Images/loc-wall.jpg'
 
 
 const Location = () => {
@@ -21,7 +22,7 @@ const Location = () => {
     const { name, value } = event.target;
     setUserLocation({ ...userLocation, [name]: value });
   };
- 
+
   const fetchAccessToken = async () => {
     try {
       const response = await axios.post('https://keycloak01.kontur.io/auth/realms/kontur/protocol/openid-connect/token', new URLSearchParams({
@@ -104,7 +105,7 @@ const Location = () => {
       const userInCurrentDisasterArea = isPointInBoundingBox(latitude, longitude, bbox);
 
       if (userInCurrentDisasterArea) {
-        console.log(`User is in the disaster area of ${event.location}`);
+        window.alert(`User is in the disaster area. Location sent to volunteer.`);
         console.log(userLocation);
 
         try {
@@ -115,7 +116,7 @@ const Location = () => {
           const { state, country } = nominatimResponse.data.address;
           console.log(country)
           console.log(state)
-          
+
 
           // Make a POST request to the backend endpoint with latitude, longitude, city, and country
           await axios.post('http://localhost:5000/emergency', {
@@ -131,10 +132,10 @@ const Location = () => {
         }
         // Handle the case where the user is in a disaster area
         break;
-      
+
       }
     }
-    console.log('User is not in any of the disaster areas.');
+    window.alert('User is not in any of the disaster areas.');
     console.log(userLocation);
     // Continue with your application logic
   };
@@ -171,8 +172,6 @@ const Location = () => {
   return (
     <>
       <div className='whole'>
-       
-
         <div className="sos-container">
           <div className="outer-circle"></div>
             <div className="inner-circle"></div>
@@ -180,22 +179,22 @@ const Location = () => {
               className="sos-button"
               onClick={() => {
               getCurrentLocation();
-             
+
               }}
                >
               <span>
               SOS
               </span>
               </button>
-             
+
         </div>
-      
+
       </div>
 
       <div className='wholeM'>
       <DropdownMenu/>
           <div className="sos-container">
-         
+
             <div className="outer-circle"></div>
               <div className="inner-circle"></div>
                 <button
@@ -210,17 +209,12 @@ const Location = () => {
                 </button>
                 <button className='loc-message'><a href="/Messages"><FontAwesomeIcon icon={faComments}  fontSize={'36px'} color='white' /></a></button>
           </div>
-          
-          <Link activeClass="active" 
-      to="section2" 
-      spy={true} 
-      smooth={true} 
-      offset={50} 
-      duration={500}><img className='dwn' src={dwnbutton}></img></Link>
+
+         <div className='loc-spacing'></div>
           </div>
-              
+
         </>
-    
+
   );
 };
 

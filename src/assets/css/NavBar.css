@@ -10,7 +10,7 @@ body {
   z-index: 100;
   padding: 1.5vh;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-  background-color: #f0385d;
+  background-color: rgba(255, 255, 255, 5%)
 }
 
 .mobileonly {
@@ -30,7 +30,7 @@ ul {
   transition: 0.5s;
 }
 .nav-text:hover {
-  color: rgb(0, 0, 0);
+  color: rgb(212, 134, 134);
 }
 .nav-text-active:hover {
   color: rgb(13, 12, 12);
@@ -103,11 +103,11 @@ ul {
 
   .logopicmob {
     position: fixed;
-    width: 40%;
+    width: 30%;
     opacity: 0.6;
     height: auto;
     top: 3%;
-    left: 30%;
+    left: 35%;
   }
   a {
     font-size: 5vw;
