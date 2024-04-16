@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './css/DisasterPage.css'; 
 const DisasterPage = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const DisasterPage = () => {
             'Provide emotional support and reassurance.',
           ],
      
-          image: '/src/Images/earth3.jpeg',
+          image: '/earth3.jpeg',
         };
       case '2':
         return {
@@ -51,7 +52,7 @@ const DisasterPage = () => {
             'Provide temporary shelter, dry clothing, and blankets to those affected.',
             'Help clean up and disinfect flooded areas to prevent mold and contamination.rovide emotional support and reassurance.',
           ],
-          image: '/src/Images/flood3.jpeg',
+          image: '/flood3.jpeg',
         };
         case '3':
           return {
@@ -66,7 +67,7 @@ const DisasterPage = () => {
               'Provide food, water, and basic necessities to evacuees.',
               'Support efforts to rebuild and recover from the wildfire\'s impact.',
             ],
-            image: '/src/Images/fire3.jpeg',
+            image: '/fire3.jpeg',
           };
       case '4':
         return {
@@ -81,7 +82,7 @@ const DisasterPage = () => {
             'Assist with search and rescue operations if safe to do so.',
             'Provide emotional support and help with recovery efforts.',
           ],
-          image: '/src/Images/tornado3.jpeg',
+          image: '/tornado3.jpeg',
         };
       
         case '5':
@@ -97,7 +98,7 @@ const DisasterPage = () => {
               'Assist with clearing debris and securing property if safe.',
               'Offer shelter, food, and water to those displaced by the hurricane.',
             ],
-            image: '/src/Images/hurricane3.jpeg',
+            image: '/hurricane3.jpeg',
           };  
 
           case '6':
@@ -113,7 +114,7 @@ const DisasterPage = () => {
                 'Offer medical care for respiratory issues or injuries caused by volcanic activity.',
                 'Support cleanup efforts and help with the restoration of affected communities.',
               ],
-              image: '/src/Images/volcano3.jpeg',
+              image: '/volcano3.jpeg',
             };
 
             case '7':
@@ -129,7 +130,7 @@ const DisasterPage = () => {
                   'Offer temporary shelter and basic necessities to those displaced by the tsunami.',
                   'Assist with search and rescue efforts as needed.',
                 ],
-                image: '/src/Images/tsunami3.jpeg',
+                image: '/tsunami3.jpeg',
               };
       // Add more cases for different disaster IDs
       default:
@@ -145,10 +146,14 @@ const DisasterPage = () => {
     <div className='disaster-scro'>
     <div className='disaster-sm'>
     <h2 className='disaster-di'>{disaster.name}</h2>
-      
+    <a href="/Response">
+        <button  className='back-buttondis'>
+          <i className="fas fa-arrow-left" ></i>
+        </button>
+        </a>
       <img src={disaster.image} alt={disaster.name} className='disaster-img'  />
       {/* <p>{disaster.description}</p> */}
-      <h3 className='disaster-tqw'>Instructions</h3>
+      <h3 className='disaster-tqw'>What to do?</h3>
       <ol className='disaster-fd'>
             {disaster.list.map((item, index) => (
               <li key={index}>{item}</li>
